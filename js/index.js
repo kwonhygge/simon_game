@@ -8,6 +8,9 @@ for (var i=0;i<numOfButtons;i++){
     var userChosenColour=this.getAttribute("id");
     userClickedPattern.push(userChosenColour);
 
+    animationPress(userChosenColour);
+    playSound(userChosenColour);
+
   });
 }
 
@@ -19,13 +22,17 @@ function nextSequence(){
 
   var pressedButton = document.querySelector("#"+randomChosenColor);
 
-  pressedButton.classList.add("pressed");
+  animationPress(randomChosenColor);
+  playSound(randomChosenColor);
 
+}
+
+function animationPress(currentColor){
+  currentColor.classList.add("pressed");
 
   setTimeout(function(){
-      pressedButton.classList.remove("pressed");
-    },120);
-
+      currentColor.classList.remove("pressed");
+    },100);
 }
 
 function playSound(name){
